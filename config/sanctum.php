@@ -17,7 +17,7 @@ return [
 
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
-        'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1',
+        'localhost,localhost:5000,127.0.0.1,127.0.0.1:8000,::1',
         Sanctum::currentApplicationUrlWithPort()
     ))),
 
@@ -84,11 +84,12 @@ return [
         'throttle:api',
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
     ],
-    'web' => [
-        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        \Illuminate\Session\Middleware\StartSession::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class, // This is essential
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
-    ],
+ 'web' => [
+    \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class, // This is crucial
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+
 ];

@@ -33,6 +33,7 @@ class AuthenticatedSessionController extends Controller
                 'user' => Auth::user(),
             ], 200);
         }    
+    
         try {
             // Attempt to authenticate the user
             $request->authenticate();
@@ -53,9 +54,9 @@ class AuthenticatedSessionController extends Controller
                 'message' => 'Login failed',
                 'errors' => $e->errors(),
             ], 422); 
-    
         } 
     }
+    
 
     /**
      * Destroy an authenticated session.
