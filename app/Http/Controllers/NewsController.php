@@ -25,9 +25,11 @@ class NewsController extends Controller
             ->map(function ($news) {
                 $news->likeCount = $news->likes_count;
                 $news->commentCount = $news->comments_count;
+                $news->image_url = $news->image_path ? asset('storage/' . $news->image_path) : null; // Add the full image URL
                 return $news;
             });
     }
+    
 
     // Store a new news post (with image upload)
     public function store(Request $request)
