@@ -4,8 +4,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ExternalNewsController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NewsController;
+use App\Models\ExternalNews;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +64,11 @@ Route::post('/news/{newsId}/like', [LikeController::class, 'toggleLike']);
 Route::post('/news/{newsId}/comment', [CommentController::class, 'store']);
 Route::get('news/{newsId}/comment', [CommentController::class, 'index']);
 
+
+Route::get('external-news', [ExternalNewsController::class, 'getExternalNews']);
+
+// Route to fetch and store external news from the API
+Route::get('fetch-external-news', [ExternalNewsController::class, 'fetchExternalNews']);
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
