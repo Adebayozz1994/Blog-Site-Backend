@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5000','https://blog-site-frontend-e25h.onrender.com',],
+    'allowed_origins' => ['http://localhost:5000'],
 
     'allowed_origins_patterns' => [],
 
